@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIS - Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hero-gradient: linear-gradient(135deg, #a2e9ff 0%, #d1c4ff 50%, #ffb1f0 100%);
+            --icon-gradient: linear-gradient(135deg, #9aeaff 0%, #ffb8f1 100%);
+            --status-green: #10b981;
+            --status-red: #ef4444;
+            --status-yellow: #f59e0b;
+        }
+
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            font-family: 'Kanit', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        body { background-color: #ffffff; color: #333; line-height: 1.5; -webkit-user-select: none; user-select: none; }
+
+        /* Navbar */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 10%; background: #fff; width: 100%; position: absolute; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 22px; font-weight: bold; }
+        .btn-black { background: #111; color: #fff; padding: 8px 18px; border-radius: 8px; text-decoration: none; font-size: 14px; }
+
+        /* Hero Section */
+        .hero {
+            height: 480px;
+            background: var(--hero-gradient);
+            display: flex; align-items: center;
+            padding: 0 10%; text-align: left;
+        }
+        .hero h1 { font-size: 2.8rem; color: #fff; line-height: 1.2; margin-bottom: 15px; }
+        .hero p { color: rgba(255,255,255,0.9); font-size: 15px; margin-bottom: 30px; max-width: 600px; }
+
+        /* --- Status Section (3 ช่องอัตโนมัติ) --- */
+        .status-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px 10%;
+            margin-top: -50px; /* ให้เกยขึ้นไปบน Hero นิดหน่อยให้ดูสวย */
+        }
+
+        .status-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            transition: 0.3s;
+        }
+        
+        /* เส้นสีตามสถานะด้านล่าง */
+        .status-line {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 4px;
+        }
+
+        .status-info { display: flex; align-items: center; gap: 15px; }
+        .status-icon-bg {
+            width: 45px; height: 45px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            background: #f8f9fa; font-size: 20px; color: #555;
+        }
+
+        .status-text h4 { font-size: 16px; font-weight: 600; }
+        .status-text p { font-size: 12px; color: #888; }
+
+        /* จุดกลมๆ */
+        .status-dot-wrap { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; }
+        .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* สีสถานะ */
+        .bg-green { background-color: var(--status-green); }
+        .bg-red { background-color: var(--status-red); }
+        .bg-yellow { background-color: var(--status-yellow); }
+        .text-green { color: var(--status-green); }
+        .text-red { color: var(--status-red); }
+        .text-yellow { color: var(--status-yellow); }
+
+        /* Why Choose Section (คงเดิม) */
+        .features-section { padding: 60px 10%; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-item { padding: 30px; border-radius: 20px; border: 1px solid #f0f0f0; transition: 0.3s; cursor: pointer; }
+        .feature-item:hover { transform: scale(1.05); border-color: #b194ff; }
+        .icon-box { width: 55px; height: 55px; border-radius: 50%; background: var(--icon-gradient); display: flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 20px; }
+
+        footer { padding: 60px 10%; display: flex; justify-content: space-between; flex-wrap: wrap; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RIS.</div>
+        <div class="nav-right">
+            <a href="https://discord.gg/HrBhZRfJP" class="btn-black">เริ่มต้นกับเรา</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>"One-Stop Digital Solutions"</h1>
+            <p>เริ่มต้นธุรกิจออนไลน์ของคุณง่ายๆ กับ RIS ผู้ให้บริการด้าน Webshop ที่ร้านค้าออนไลน์ไว้วางใจ</p>
+            <a href="https://discord.gg/HrBhZRfJP" style="background:#fff; color:#333; padding:12px 25px; border-radius:10px; text-decoration:none; font-weight:600; box-shadow:0 4px 15px rgba(0,0,0,0.05);"><i class="fas fa-bars-staggered"></i> ค่ายเช่าเว็บ</a>
+        </div>
+    </section>
+
+    <div class="status-container">
+        <div class="status-card" id="card-web">
+            <div class="status-info">
+                <div class="status-icon-bg"><i class="fas fa-globe"></i></div>
+                <div class="status-text">
+                    <h4>เช่าเว็บไซต์</h4>
+                    <p id="msg-web">กำลังตรวจสอบ...</p>
+                </div>
+            </div>
+            <div class="status-dot-wrap" id="dot-web">
+                <div class="dot"></div> <span id="label-web">สถานะ</span>
+            </div>
+            <div class="status-line" id="line-web"></div>
+        </div>
+
+        <div class="status-card" id="card-admin">
+            <div class="status-info">
+                <div class="status-icon-bg"><i class="fas fa-user-tie"></i></div>
+                <div class="status-text">
+                    <h4>แอดมิน <span style="background:#eee; padding:2px 8px; border-radius:5px; font-size:12px;">2</span></h4>
+                    <p id="msg-admin">กำลังตรวจสอบ...</p>
+                </div>
+            </div>
+            <div class="status-dot-wrap" id="dot-admin">
+                <div class="dot"></div> <span id="label-admin">สถานะ</span>
+            </div>
+            <div class="status-line" id="line-admin"></div>
+        </div>
+
+        <div class="status-card" id="card-photo">
+            <div class="status-info">
+                <div class="status-icon-bg"><i class="fas fa-image"></i></div>
+                <div class="status-text">
+                    <h4>ทำรูป</h4>
+                    <p id="msg-photo">กำลังตรวจสอบ...</p>
+                </div>
+            </div>
+            <div class="status-dot-wrap" id="dot-photo">
+                <div class="dot"></div> <span id="label-photo">สถานะ</span>
+            </div>
+            <div class="status-line" id="line-photo"></div>
+        </div>
+    </div>
+
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon-box"><i class="far fa-clock"></i></div>
+                <h3>จัดการบริการได้ทุกเวลา</h3>
+                <p>คุณสามารถจัดการบริการทั้งหมดได้ตลอด 24 ชั่วโมง</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3>ระบบรักษาความปลอดภัย</h3>
+                <p>ได้มาตรฐาน พร้อมระบบป้องกันภัยคุกคาม</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="fas fa-headset"></i></div>
+                <h3>บริการซัพพอร์ต</h3>
+                <p>ทีมงานพร้อมให้ความช่วยเหลือตลอดเวลา</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="f-left">
+            <h4>RIS.</h4>
+            <p><strong>บริษัท เอ็กดีอาเอ็น ดีจิทัล จำกัด & อาไอเอส ศูนย์กลาง</strong></p>
+        </div>
+        <div class="f-right">
+            <p>Facebook: XDRN HUB & RIS HUB</p>
+            <p>Discord: <a href="https://discord.gg/nXdJsf85DE" style="color:#3b82f6; text-decoration:none;">discord.gg/nXdJsf85DE</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function updateStatus() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            const currentMinute = now.getMinutes();
+            const currentDate = now.getDate();
+            const currentMonth = now.getMonth(); // 0 = Jan, 2 = March
+
+            // 1. เช่าเว็บไซต์ (สีเหลือง จนกว่าจะถึง 12 เมษายน 2026)
+            // เงื่อนไข: ถ้าเดือนน้อยกว่าเมษายน (3) หรือ (เป็นเดือนเมษายนและวันที่น้อยกว่า 12)
+            const isReadyWeb = (currentMonth > 3) || (currentMonth === 3 && currentDate >= 12);
+            setUI('web', isReadyWeb ? 'green' : 'yellow', isReadyWeb ? 'เปิดใช้งาน' : 'ยังไม่พร้อมใช้งาน');
+
+            // 2. แอดมิน (สีแดงตอน 00:00 - 07:29, นอกนั้นเขียว)
+            const isAdminOpen = currentHour >= 7 && (currentHour > 7 || currentMinute >= 0); 
+            // ตามโจทย์บอก แดงตอน 00:00 ดังนั้นถ้า 0-6 คือแดง
+            const adminStatus = (currentHour >= 0 && currentHour < 7) ? 'red' : 'green';
+            setUI('admin', adminStatus, adminStatus === 'green' ? 'เปิดใช้งาน' : 'ปิดใช้งาน');
+
+            // 3. ทำรูป (เขียว 7:30, แดง 00:00)
+            let photoStatus = 'red';
+            if (currentHour > 7 || (currentHour === 7 && currentMinute >= 30)) {
+                photoStatus = 'green';
+            }
+            if (currentHour === 0) photoStatus = 'red';
+            setUI('photo', photoStatus, photoStatus === 'green' ? 'เปิดใช้งาน' : 'ปิดใช้งาน');
+        }
+
+        function setUI(id, color, label) {
+            const line = document.getElementById('line-' + id);
+            const dot = document.querySelector('#dot-' + id + ' .dot');
+            const labelText = document.getElementById('label-' + id);
+            const msg = document.getElementById('msg-' + id);
+
+            // รีเซ็ตคลาส
+            line.className = 'status-line bg-' + color;
+            dot.className = 'dot bg-' + color;
+            labelText.className = 'text-' + color;
+            labelText.innerText = label;
+            msg.innerText = (color === 'green') ? 'พร้อมให้บริการในขณะนี้' : (color === 'yellow' ? 'รอเปิดตัววันที่ 12 เดือนหน้า' : 'ขณะนี้ปิดให้บริการ');
+        }
+
+        // รันครั้งแรกและอัปเดตทุกนาที
+        updateStatus();
+        setInterval(updateStatus, 60000);
+    </script>
+</body>
+</html>

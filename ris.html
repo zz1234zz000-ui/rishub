@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIS - Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hero-gradient: linear-gradient(135deg, #a2e9ff 0%, #d1c4ff 50%, #ffb1f0 100%);
+            --icon-gradient: linear-gradient(135deg, #9aeaff 0%, #ffb8f1 100%);
+            --accent-purple: #b194ff;
+        }
+
+        /* แก้บั๊กแถบสีฟ้าเวลาคลิก (Tap Highlight) */
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            font-family: 'Kanit', sans-serif;
+            -webkit-tap-highlight-color: transparent; /* เอาแถบสีฟ้าเวลาจิ้มในมือถือออก */
+            outline: none; /* เอาขอบสีฟ้าเวลา Focus ออก */
+        }
+
+        body { background-color: #ffffff; color: #333; line-height: 1.5; -webkit-user-select: none; user-select: none; }
+
+        /* Navbar */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 10%; background: #fff; width: 100%; position: absolute; top: 0; z-index: 1000;
+        }
+        .logo { font-size: 22px; font-weight: bold; color: #333; }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .status { color: #10b981; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+        .btn-black { 
+            background: #111; color: #fff; padding: 8px 18px; border-radius: 8px; 
+            text-decoration: none; font-size: 14px; display: flex; align-items: center; gap: 8px;
+        }
+
+        /* Hero Section - แบน + ชิดซ้าย */
+        .hero {
+            height: 520px;
+            background: var(--hero-gradient);
+            display: flex; align-items: center;
+            padding: 0 10%; text-align: left;
+        }
+        .hero-content { max-width: 650px; }
+        .hero h1 { font-size: 2.8rem; color: #fff; line-height: 1.2; margin-bottom: 15px; }
+        .hero p { color: rgba(255,255,255,0.9); font-size: 15px; margin-bottom: 30px; font-weight: 300; }
+        .btn-list {
+            background: #fff; color: #333; padding: 12px 30px; border-radius: 10px;
+            text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* --- Section: Why Choose Ours? (กลับมาเป็น Grid 3 คอลัมน์) --- */
+        .features-section { padding: 80px 10%; background: #fff; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.2rem; margin-top: 5px; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ขนาดเดิม 3 คอลัมน์ */
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0; /* ขอบเล็กๆ ชัดเจน */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* อนิเมชั่นเวลากด/ชี้: ขยายใหญ่ขึ้น */
+        .feature-item:hover, .feature-item:active {
+            transform: scale(1.05); /* ขยายใหญ่ขึ้นเล็กน้อย */
+            border-color: var(--accent-purple);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+        }
+
+        .icon-box {
+            width: 55px; height: 55px; border-radius: 50%;
+            background: var(--icon-gradient);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; color: #fff; font-size: 22px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-item h3 { font-size: 18px; margin-bottom: 10px; color: #333; font-weight: 600; }
+        .feature-item p { font-size: 14px; color: #888; font-weight: 300; }
+
+        /* Team Section */
+        .team-section { padding: 80px 10%; background: #fafafa; text-align: center; }
+        .team-grid { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+        .team-card {
+            background: #fff; width: 340px; padding: 40px; border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03); border: 1px solid #eee;
+        }
+        .profile-wrap { width: 140px; height: 140px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 5px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .profile-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Footer */
+        footer { padding: 60px 10%; display: flex; justify-content: space-between; flex-wrap: wrap; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RIS.</div>
+        <div class="nav-right">
+            <div class="status"><i class="fas fa-circle" style="font-size: 8px;"></i> 24/7 ชั่วโมง</div>
+            <a href="https://discord.gg/HrBhZRfJP" class="btn-black"><i class="fas fa-rocket"></i> เริ่มต้นกับเรา</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>"One-Stop Digital Solutions"<br>ตอบโจทย์ทุกธุรกิจออนไลน์</h1>
+            <p>เริ่มต้นธุรกิจออนไลน์ของคุณง่ายๆ กับ RIS ผู้ให้บริการด้าน Webshop ที่ร้านค้าออนไลน์ไว้วางใจ เราพร้อมช่วยคุณเปิดร้านได้ทันที ด้วยระบบที่ใช้งานง่ายและปลอดภัย</p>
+            <a href="https://discord.gg/HrBhZRfJP" class="btn-list"><i class="fas fa-bars-staggered"></i> ค่ายเช่าเว็บ</a>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="section-header">
+            <small style="color:#aaa; letter-spacing: 2px;">Why Choose Ours?</small>
+            <h2>ทำไมถึงเลือกใช้ของพวกเรา</h2>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon-box"><i class="far fa-clock"></i></div>
+                <h3>จัดการบริการได้ทุกเวลา</h3>
+                <p>คุณสามารถจัดการบริการทั้งหมดที่ใช้งานได้ผ่านระบบบริการของเราตลอด 24 ชั่วโมง</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3>ระบบรักษาความปลอดภัยระดับสูง</h3>
+                <p>เซิร์ฟเวอร์ตั้งอยู่ใน Data Center ที่ได้มาตรฐาน พร้อมระบบป้องกันภัยคุกคาม</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="far fa-check-circle"></i></div>
+                <h3>เริ่มใช้งานได้ทันทีหลังการสั่งซื้อ</h3>
+                <p>ระบบอัตโนมัติที่ช่วยให้คุณเริ่มใช้งานได้ทันทีหลังจากสั่งซื้อสำเร็จ</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+                <h3>รับประกันการทำงาน 99.9%</h3>
+                <p>การันตีความพร้อมใช้งานด้วยอุปกรณ์และซอฟต์แวร์ที่ทันสมัย</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="far fa-calendar-alt"></i></div>
+                <h3>เปิดให้บริการมาแล้วมากกว่า 3 ปี</h3>
+                <p>เราสั่งสมประสบการณ์และได้รับความไว้วางใจจากลูกค้ามากมาย</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon-box"><i class="fas fa-headset"></i></div>
+                <h3>บริการซัพพอร์ตตลอด 24 ชั่วโมง</h3>
+                <p>ทีมงานพร้อมให้ความช่วยเหลือผ่านระบบที่สะดวกและรวดเร็ว</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <small style="color:#999">OUR TEAM</small>
+        <h2>ทีมงานเบื้องหลัง</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="profile-wrap"><img src="https://img2.pic.in.th/IMG_513993e75f4dbd1c2dd5.jpeg" alt="SOFT"></div>
+                <h3>SOFT</h3>
+                <span style="color:var(--accent-purple); font-weight:600; font-size:13px;">FOUNDER & DEVELOPER</span>
+                <div style="display:flex; justify-content:center; gap:20px; color:#ccc; font-size:20px; border-top:1px solid #f5f5f5; padding-top:20px; margin-top:20px;">
+                    <i class="fab fa-facebook"></i> <i class="fab fa-discord"></i> <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="profile-wrap"><img src="https://img2.pic.in.th/IMG_20251226_074628_069.webp" alt="RIS"></div>
+                <h3>RIS</h3>
+                <span style="color:var(--accent-purple); font-weight:600; font-size:13px;">SYSTEM SUPPORT</span>
+                <div style="display:flex; justify-content:center; gap:20px; color:#ccc; font-size:20px; border-top:1px solid #f5f5f5; padding-top:20px; margin-top:20px;">
+                    <i class="fab fa-facebook"></i> <i class="fab fa-discord"></i> <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="f-left">
+            <h4>RIS.</h4>
+            <p><strong>บริษัท เอ็กดีอาเอ็น ดีจิทัล จำกัด & อาไอเอส ศูนย์กลาง</strong><br>ผู้นำด้านการให้บริการ Web Application และ E-Commerce</p>
+        </div>
+        <div class="f-right">
+            <h4 style="margin-bottom:10px;">ติดต่อเรา</h4>
+            <p>Facebook: XDRN HUB & RIS HUB</p>
+            <p>Discord: <a href="https://discord.gg/nXdJsf85DE" style="color:#3b82f6; text-decoration:none;">discord.gg/nXdJsf85DE</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
